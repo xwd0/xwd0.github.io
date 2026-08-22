@@ -6,4 +6,4 @@
 <img width="1279" height="636" alt="image" src="https://github.com/user-attachments/assets/b54d9025-d0a7-4d42-aff0-908c59fa0321" />
 
 
-**网址**：https://xwd0.github.io/freecc/
+**网址**：https://xwd0.github.io/
