@@ -1,16 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>跳转中...</title>
-<!-- 0秒立刻跳转 -->
-<meta http-equiv="refresh" content="0;url=https://1803d538.r9.cpolar.cn">
+    <meta charset="UTF-8">
+    <title>跳转中...</title>
+    <!-- 关键：告诉浏览器不要缓存当前这个html页面 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 <body>
 <script>
-// JS兜底跳转
-window.location.href = "https://1803d538.r9.cpolar.cn";
+// =========只需要修改这里的目标地址=========
+const targetUrl = "https://1803d538.r9.cpolar.cn";
+// ==========================================
+
+// 生成meta refresh标签，动态创建，写死在html的meta refresh会被缓存的旧页面直接执行，js创建就不会
+const metaRefresh = document.createElement('meta');
+metaRefresh.httpEquiv = "refresh";
+metaRefresh.content = `0;url=${targetUrl}`;
+document.head.appendChild(metaRefresh);
+
+// 增加随机查询字符串，破坏跳转缓存，同时跳转目标
+const randomParam = `?_t=${Date.now()}`;
+window.location.href = targetUrl + randomParam;
 </script>
-<p>如果没有自动跳转，请 <a href="https://1803d538.r9.cpolar.cn">点击这里</a></p>
+
+<p>如果没有自动跳转，请 <a id="jumpLink">点击这里</a></p>
+<script>
+// 给a标签也设置最新地址+随机参数
+document.getElementById("jumpLink").href = targetUrl + `?_t=${Date.now()}`;
+</script>
 </body>
 </html>
