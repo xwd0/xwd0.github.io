@@ -9,7 +9,13 @@
 </head>
 <body>
 <script>
-const targetUrl = "https://5ff3c4ea.r11.vip.cpolar.cn";
+const baseUrl = "https://5ff3c4ea.r11.vip.cpolar.cn";
+const urlParams = new URLSearchParams(window.location.search);
+const pathRaw = urlParams.get('path') || '';
+const path = decodeURIComponent(pathRaw);
+
+const targetUrl = baseUrl + path;
+
 const metaRefresh = document.createElement('meta');
 metaRefresh.httpEquiv = "refresh";
 metaRefresh.content = `0;url=${targetUrl}`;
